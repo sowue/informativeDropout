@@ -5,7 +5,7 @@
 # "A Dirichlet Process Mixture Model for Non-Ignorable Dropout.",
 # 2018, under review.
 #
-#
+
 library(dplyr)
 
 # load the data set of untreated hiv participants
@@ -37,8 +37,8 @@ censoring.var = "delta"
 dist = "gaussian"
 method="dirichlet"
 
-model.options=dirichlet.model.options(iterations=200000, n.clusters=60, burnin=50000, thin=1,
-                                      print=1000,
+model.options=dirichlet.model.options(iterations=200, n.clusters=60, burnin=5, thin=1,
+                                      print=100,
                                       dropout.offset=0,
                                       dropout.estimationTimes = c(1,2,3,4,5),
                                       dropout.estimationTimes.censored = c(4,5),
