@@ -10,6 +10,8 @@ library(dplyr)
 
 # load the data set of untreated hiv participants
 data("untreated_hiv")
+
+#write.csv(untreated_hiv, file="untreated_hiv1.csv")
 # remove patients with none or 1 observations
 nobs_by_patid = untreated_hiv %>% group_by(patid) %>% summarise(nobs=n())
 data = left_join(untreated_hiv, nobs_by_patid, by="patid") %>% 
@@ -66,10 +68,10 @@ fit = informativeDropout(data, model.options, ids.var,
                          outcomes.var, groups.var,
                          covariates.var, 
                          times.dropout.var, times.observation.var,
-                         censoring.var=censoring.var,
+ #                        censoring.var=censoring.var,
                          method=method, dist=dist)
 
-# summarize the result
+        # summarize the result
 summary(fit)
 
 # calculate difference in slope between hard drug users and non-users
